@@ -36,6 +36,22 @@ reformat("liMeSHArp DeveLoper TEST") //Lmshrp dvlpr tst
 ```
 Your solution:
 
+```php
+<?php
+
+function reformat(string $data): string
+{
+    // convert string to all lower case
+    $lowerCasedString = strtolower($data);
+    
+    // remove all vowels from string
+    $noVowelString = preg_replace('/[aeiou]/i', '', $lowerCasedString);
+    
+    // return string with lowercase except first letter
+    return ucfirst($noVowelString);
+}
+```
+
 ###### If we type in our console your function and reformat("liMeSHArp DeveLoper TEST") then the result should be Lmshrp dvlpr tst
 
 
