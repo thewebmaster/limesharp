@@ -69,6 +69,42 @@ next_binary_number([1,0]) // [1,1]
 ```
 Your solution:
 
+```php
+<?php
+
+function next_binary_number(array $data): string
+{
+    $dataCount = count($data);
+    $isUpdateDone = false;
+    $result = '';
+    
+    for($x=($dataCount-1); $x>=0; --$x) {
+        
+        switch(true) {
+            
+            case (($data[$x] === 0) && !$isUpdateDone):
+                $result = '1' . $result;
+                $isUpdateDone = true;
+            break;
+            
+            case (($data[$x] === 1) && ($x > 0) && !$isUpdateDone):
+                $result = '0' . $result;
+            break;
+            
+            case (($data[$x] === 1) && ($x === 0) && !$isUpdateDone):
+                $result = '10' . $result;
+            break;
+            
+            default:
+                $result = $data[$x] . $result;
+            break;
+        }
+    }
+    
+    return $result;
+}
+```
+
 ###### If we type in our console your function and next_binary_number([1,0,0,0,0,0,0,0,0,1]) then the result should look like 1,0,0,0,0,0,0,0,1,0 (or as an array).
 
 ---
